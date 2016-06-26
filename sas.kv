@@ -7,9 +7,44 @@
         do_default_tab: False
 
         TabbedPanelItem:
-            text: 'first tab'
-            Label:
-                text: 'First tab content area'
+            text: 'Login Page'
+            size_hint: .5, .5
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            GridLayout:
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                cols: 2
+                Label:
+                    size_hint_y: None
+                    height: 70
+                    text: 'User Name'
+                TextInput:
+                    id: user
+                    font_size: 50
+                    size_hint_y: None
+                    height: 70
+                    multiline: False
+                Label:
+                    size_hint_y: None
+                    height: 70
+                    text: 'Password'
+                TextInput:
+                    id: pwd
+                    font_size: 50
+                    size_hint_y: None
+                    height: 70
+                    multiline: False
+                    password: True
+                Button:
+                    size_hint_y: None
+                    height: 40
+                    text: 'Sign Up'
+                    on_release: root.register_prof()
+                Button:
+                    size_hint_y: None
+                    height: 40
+                    text: 'Sign In'
+                    on_release: root.log_prof(user.text,pwd.txt)
+
         TabbedPanelItem:
             text: 'tab2'
             BoxLayout:
