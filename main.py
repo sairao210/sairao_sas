@@ -10,6 +10,10 @@ from kivy.uix.boxlayout import BoxLayout
 from pygments.lexers import CythonLexer
 from kivy.uix.codeinput import CodeInput
 from kivy.uix.screenmanager import ScreenManager, Screen
+from website import*
+import threading
+import time
+import urllib2
 
 import os
 import json
@@ -31,8 +35,19 @@ class MainScreen(Screen):
 
         if(flag == 0):
             wel.text =  "Username doesnt match"
-
         f.close()
+
+    def start_server(self,but,txt):
+        if(but.text == 'Stop server'):
+            response = urllib2.urlopen('http://localhost:2525/shutdown')
+            txt.text = 'Press above Button to Host attendance website'
+            but.text = 'Start server'
+        else:
+            but.text = 'Stop server'
+            threading.Thread(target = serv1,args=('sai',)).start()
+            txt.text = 'Server Started'
+
+
 
 class Signupscreen(Screen):
     def register_prof(self,user,pwd,subname,msgbox,reg_but):
