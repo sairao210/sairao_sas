@@ -1,5 +1,1 @@
-{
-  "profs":[
-    {"name" : "sairao","pass" : "admin123"},
-    {"name" : "vinay","pass" : "admin123"}]
-}
+{"profs": [{"Sub Name": "pds", "name": "sairao", "pass": "1234"}]}
