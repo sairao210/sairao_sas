@@ -11,7 +11,10 @@ from pygments.lexers import CythonLexer
 from kivy.uix.codeinput import CodeInput
 
 class Myscreen(BoxLayout):
-    pass
+    def log_prof(self,name,password):
+        pass
+    def register_prof(self):
+        pass
 
 class SasApp(App):
     def build(self):
