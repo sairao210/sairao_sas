@@ -1,63 +1,127 @@
 
-<Myscreen>:
-    orientation: 'vertical'
-    TabbedPanel:
-        size_hint: .5, .5
-        pos_hint: {'center_x': .5, 'center_y': .5}
-        do_default_tab: False
-
-        TabbedPanelItem:
-            text: 'Login Page'
+<MainScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        TabbedPanel:
             size_hint: .5, .5
             pos_hint: {'center_x': .5, 'center_y': .5}
-            GridLayout:
-                orientation: 'vertical'
-                cols: 1
-                Label:
-                    id: wel
-                    text: 'Welcome'
-                    size_hint_y: None
-                    height: 30
-                GridLayout:
-                    pos_hint: {'center_x': .5, 'center_y': .5}
-                    cols: 2
-                    Label:
-                        size_hint_y: None
-                        height: 70
-                        text: 'User Name'
-                    TextInput:
-                        id: user
-                        font_size: 50
-                        size_hint_y: None
-                        height: 70
-                        multiline: False
-                    Label:
-                        size_hint_y: None
-                        height: 70
-                        text: 'Password'
-                    TextInput:
-                        id: pwd
-                        font_size: 50
-                        size_hint_y: None
-                        height: 70
-                        multiline: False
-                        password: True
-                    Button:
-                        size_hint_y: None
-                        height: 40
-                        text: 'Sign Up'
-                        on_release: root.register_prof()
-                    Button:
-                        id: sign_in
-                        size_hint_y: None
-                        height: 40
-                        text: 'Sign In'
-                        on_release: root.log_prof(user.text,pwd.text,wel,sign_in)
+            do_default_tab: False
 
-        TabbedPanelItem:
-            text: 'tab2'
-            BoxLayout:
-                Label:
-                    text: 'Second tab content area'
-                Button:
-                    text: 'Button that does nothing'
+            TabbedPanelItem:
+                text: 'Login Page'
+                size_hint: .5, .5
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                GridLayout:
+                    orientation: 'vertical'
+                    cols: 1
+                    Label:
+                        id: wel
+                        text: 'Welcome'
+                        size_hint_y: None
+                        height: 30
+                    GridLayout:
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                        cols: 2
+                        Label:
+                            size_hint_y: None
+                            height: 70
+                            text: 'User Name'
+                        TextInput:
+                            id: user
+                            font_size: 50
+                            size_hint_y: None
+                            height: 70
+                            multiline: False
+                        Label:
+                            size_hint_y: None
+                            height: 70
+                            text: 'Password'
+                        TextInput:
+                            id: pwd
+                            font_size: 50
+                            size_hint_y: None
+                            height: 70
+                            multiline: False
+                            password: True
+                        Button:
+                            size_hint_y: None
+                            height: 40
+                            text: 'Sign Up'
+                            on_release: root.manager.current = 'signup'
+                        Button:
+                            id: sign_in
+                            size_hint_y: None
+                            height: 40
+                            text: 'Sign In'
+                            on_release: root.log_prof(user.text,pwd.text,wel,sign_in)
+
+            TabbedPanelItem:
+                text: 'tab2'
+                BoxLayout:
+                    Label:
+                        text: 'Second tab content area'
+                    Button:
+                        text: 'Button that does nothing'
+
+
+<Signupscreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'SignUp Page'
+            size_hint_y: None
+            height: 20
+        Label:
+            size_hint_y: None
+            height: 110
+        GridLayout:
+            cols: 2
+            Label:
+                text: 'Username'
+                size_hint_y: None
+                height: 35
+            TextInput:
+                id: user
+                text:
+                size_hint_y: None
+                height: 25
+                font_size: 20
+            Label:
+                text: 'Password'
+                size_hint_y: None
+                height: 35
+            TextInput:
+                id: pwd
+                text:
+                size_hint_y: None
+                height: 25
+                font_size: 20
+            Label:
+                text: 'Subjet Name'
+                size_hint_y: None
+                height: 35
+            TextInput:
+                id: subname
+                text:
+                size_hint_y: None
+                height: 25
+                font_size: 20
+
+        Button:
+            id: reg_but
+            text: 'Register'
+            size_hint_y: None
+            size_hint_x: .5
+            pos_hint: {'center_x': .5}
+            height: 50
+            on_release: root.register_prof(user.text,pwd.text,subname.text,msgbox,reg_but)
+        Label:
+            id: msgbox
+            size_hint_y: None
+            height: 110
+
+        Button:
+            text: '<< Go back'
+            size_hint_y: None
+            height: 30
+            on_release: root.manager.current = 'main'
