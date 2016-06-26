@@ -6,11 +6,8 @@
             size_hint: .5, .5
             pos_hint: {'center_x': .5, 'center_y': .5}
             do_default_tab: False
-
             TabbedPanelItem:
                 text: 'Login Page'
-                size_hint: .5, .5
-                pos_hint: {'center_x': .5, 'center_y': .5}
                 GridLayout:
                     orientation: 'vertical'
                     cols: 1
@@ -54,14 +51,40 @@
                             height: 40
                             text: 'Sign In'
                             on_release: root.log_prof(user.text,pwd.text,wel,sign_in)
-
             TabbedPanelItem:
-                text: 'tab2'
-                BoxLayout:
+                text: 'Main Page'
+                GridLayout:
+                    padding: [3,3,3,3]
+                    cols: 1
                     Label:
-                        text: 'Second tab content area'
-                    Button:
-                        text: 'Button that does nothing'
+                        text: 'Welcome '+user.text
+                        size_hint_y: None
+                        height: 20
+                    GridLayout:
+                        padding: [15,15,15,15]
+                        size_hint_y: 0.3
+                        cols: 1
+                        Button:
+                            id: server_but
+                            size_hint_y: 0.2
+                            text: 'Start server'
+                            on_release: root.start_server(server_but,server_text)
+                        TextInput:
+                            text: 'Press above Button to Host attendance website'
+                            size_hint_y: 0.8
+                            id: server_text
+                    GridLayout:
+                        padding: [15,15,15,15]
+                        cols: 1
+                        size_hint_y: 0.7
+                        Label:
+                            id: students_lab
+                            size_hint_y: 0.1
+                            text: 'Students Details'
+                        TextInput:
+                            text: 'No one has yet given attendance'
+                            size_hint_y: 0.9
+                            id: students_text
 
 
 <Signupscreen>:
