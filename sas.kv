@@ -11,39 +11,48 @@
             size_hint: .5, .5
             pos_hint: {'center_x': .5, 'center_y': .5}
             GridLayout:
-                pos_hint: {'center_x': .5, 'center_y': .5}
-                cols: 2
+                orientation: 'vertical'
+                cols: 1
                 Label:
+                    id: wel
+                    text: 'Welcome'
                     size_hint_y: None
-                    height: 70
-                    text: 'User Name'
-                TextInput:
-                    id: user
-                    font_size: 50
-                    size_hint_y: None
-                    height: 70
-                    multiline: False
-                Label:
-                    size_hint_y: None
-                    height: 70
-                    text: 'Password'
-                TextInput:
-                    id: pwd
-                    font_size: 50
-                    size_hint_y: None
-                    height: 70
-                    multiline: False
-                    password: True
-                Button:
-                    size_hint_y: None
-                    height: 40
-                    text: 'Sign Up'
-                    on_release: root.register_prof()
-                Button:
-                    size_hint_y: None
-                    height: 40
-                    text: 'Sign In'
-                    on_release: root.log_prof(user.text,pwd.txt)
+                    height: 30
+                GridLayout:
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    cols: 2
+                    Label:
+                        size_hint_y: None
+                        height: 70
+                        text: 'User Name'
+                    TextInput:
+                        id: user
+                        font_size: 50
+                        size_hint_y: None
+                        height: 70
+                        multiline: False
+                    Label:
+                        size_hint_y: None
+                        height: 70
+                        text: 'Password'
+                    TextInput:
+                        id: pwd
+                        font_size: 50
+                        size_hint_y: None
+                        height: 70
+                        multiline: False
+                        password: True
+                    Button:
+                        size_hint_y: None
+                        height: 40
+                        text: 'Sign Up'
+                        on_release: root.register_prof()
+                    Button:
+                        id: sign_in
+                        size_hint_y: None
+                        height: 40
+                        text: 'Sign In'
+                        on_release: root.log_prof(user.text,pwd.text,wel,sign_in)
 
         TabbedPanelItem:
             text: 'tab2'
